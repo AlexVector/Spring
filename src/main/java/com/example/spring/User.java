@@ -11,26 +11,29 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private  String name;
-    private  String email;
-    private  String password;
+    private String name;
+    private String email;
+    private String password;
+    private String status;
 
     // standard constructors / setters / getters / toString
 
 
     public User() {}
 
-    public User(long id, String name, String email, String password) {
+    public User(long id, String name, String email, String password, String status) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.status = status;
     }
 
-    public User(String name, String email, String password) {
+    public User(String name, String email, String password, String status) {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.status = status;
     }
 
 
@@ -55,6 +58,14 @@ public class User {
         return password;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -62,6 +73,7 @@ public class User {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
 }
