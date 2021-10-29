@@ -17,10 +17,13 @@ public class Application {
     @Bean
     CommandLineRunner init(UserRepository userRepository) {
         return args -> {
-            Stream.of("Admin", "Moder", "User").forEach(name -> {
-                User user = new User(name, name.toLowerCase() + "@gmail.com", name.toLowerCase()+"1234");
-                userRepository.save(user);
-            });
+            User adm = new User("Admin", "admin@gmail.com", "1234", "Администратор");
+            User mod = new User("Moderator", "moderator@gmail.com", "1234", "Модератор");
+            User user = new User("User", "user@gmail.com", "1234", "Пользователь");
+            userRepository.save(adm);
+            userRepository.save(mod);
+            userRepository.save(user);
+
             userRepository.findAll().forEach(System.out::println);
         };
     }
